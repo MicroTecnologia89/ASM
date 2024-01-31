@@ -1,0 +1,120 @@
+MPLINK 5.09, LINKER
+Linker Map File - Created Sun Feb 07 23:17:55 2021
+
+                                 Section Info
+                  Section       Type    Address   Location Size(Bytes)
+                ---------  ---------  ---------  ---------  ---------
+                   .org_0       code   0x000000    program   0x000004
+                   .cinit    romdata   0x000004    program   0x000002
+                   .org_1       code   0x000008    program   0x000004
+                   .org_2       code   0x000018    program   0x00027e
+.config_300001_BUILD/DEFAULT/PRODUCTION/MAIN AD    romdata   0x300001    program   0x000001
+.config_300002_BUILD/DEFAULT/PRODUCTION/MAIN AD    romdata   0x300002    program   0x000001
+.config_300003_BUILD/DEFAULT/PRODUCTION/MAIN AD    romdata   0x300003    program   0x000001
+.config_300005_BUILD/DEFAULT/PRODUCTION/MAIN AD    romdata   0x300005    program   0x000001
+.config_300006_BUILD/DEFAULT/PRODUCTION/MAIN AD    romdata   0x300006    program   0x000001
+.config_300008_BUILD/DEFAULT/PRODUCTION/MAIN AD    romdata   0x300008    program   0x000001
+.config_300009_BUILD/DEFAULT/PRODUCTION/MAIN AD    romdata   0x300009    program   0x000001
+.config_30000A_BUILD/DEFAULT/PRODUCTION/MAIN AD    romdata   0x30000a    program   0x000001
+.config_30000B_BUILD/DEFAULT/PRODUCTION/MAIN AD    romdata   0x30000b    program   0x000001
+.config_30000C_BUILD/DEFAULT/PRODUCTION/MAIN AD    romdata   0x30000c    program   0x000001
+.config_30000D_BUILD/DEFAULT/PRODUCTION/MAIN AD    romdata   0x30000d    program   0x000001
+
+
+
+                              Program Memory Usage 
+                               Start         End      
+                           ---------   ---------      
+                            0x000000    0x000005      
+                            0x000008    0x00000b      
+                            0x000018    0x000295      
+                            0x300001    0x300003      
+                            0x300005    0x300006      
+                            0x300008    0x30000d      
+            659 out of 66584 program addresses used, program memory utilization is 0%
+
+
+
+                              Symbols - Sorted by Name
+                     Name    Address   Location    Storage File                     
+                ---------  ---------  ---------  --------- ---------                
+           ADC_CONVERSION   0x00014e    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\ADC DISPLAY 10 BITS.X\MAIN ADC10.asm
+                 ADC_PROC   0x000152    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\ADC DISPLAY 10 BITS.X\MAIN ADC10.asm
+           ALTA_PRIORIDAD   0x00002e    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\ADC DISPLAY 10 BITS.X\MAIN ADC10.asm
+               ASIGNA_256   0x0000d6    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\ADC DISPLAY 10 BITS.X\MAIN ADC10.asm
+               ASIGNA_512   0x0000a8    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\ADC DISPLAY 10 BITS.X\MAIN ADC10.asm
+           BAJA_PRIORIDAD   0x000018    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\ADC DISPLAY 10 BITS.X\MAIN ADC10.asm
+            CICLO_RETARDO   0x000238    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\ADC DISPLAY 10 BITS.X\RETARDOS.INC
+           CONFIG_RETARDO   0x00019c    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\ADC DISPLAY 10 BITS.X\RETARDOS.INC
+           CONVERSION_BCD   0x000162    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\ADC DISPLAY 10 BITS.X\MAIN ADC10.asm
+    CONVERSION_BCD_10BITS   0x00008c    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\ADC DISPLAY 10 BITS.X\MAIN ADC10.asm
+               DIVIDE_255   0x00013c    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\ADC DISPLAY 10 BITS.X\MAIN ADC10.asm
+                FIN_INTER   0x000022    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\ADC DISPLAY 10 BITS.X\MAIN ADC10.asm
+                   INICIO   0x000032    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\ADC DISPLAY 10 BITS.X\MAIN ADC10.asm
+              MAPEA_ADC_0   0x00012c    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\ADC DISPLAY 10 BITS.X\MAIN ADC10.asm
+                PRINCIPAL   0x000060    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\ADC DISPLAY 10 BITS.X\MAIN ADC10.asm
+                 RETARDOS   0x00022e    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\ADC DISPLAY 10 BITS.X\RETARDOS.INC
+                RET_100ms   0x000260    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\ADC DISPLAY 10 BITS.X\RETARDOS.INC
+                RET_100us   0x00021e    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\ADC DISPLAY 10 BITS.X\RETARDOS.INC
+                 RET_10ms   0x000248    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\ADC DISPLAY 10 BITS.X\RETARDOS.INC
+                  RET_1ms   0x000258    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\ADC DISPLAY 10 BITS.X\RETARDOS.INC
+                   RET_1s   0x00028e    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\ADC DISPLAY 10 BITS.X\RETARDOS.INC
+                RET_500ms   0x000268    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\ADC DISPLAY 10 BITS.X\RETARDOS.INC
+                  RET_5ms   0x000250    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\ADC DISPLAY 10 BITS.X\RETARDOS.INC
+              RET_BOTONES   0x0001a8    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\ADC DISPLAY 10 BITS.X\RETARDOS.INC
+               RET_X100ms   0x0001e2    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\ADC DISPLAY 10 BITS.X\RETARDOS.INC
+                RET_X10ms   0x0001f6    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\ADC DISPLAY 10 BITS.X\RETARDOS.INC
+                  RET_X1s   0x0001ce    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\ADC DISPLAY 10 BITS.X\RETARDOS.INC
+                  RET_Xms   0x00020a    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\ADC DISPLAY 10 BITS.X\RETARDOS.INC
+                 SUMA_256   0x0000c2    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\ADC DISPLAY 10 BITS.X\MAIN ADC10.asm
+            SUMA_CENTENAS   0x000178    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\ADC DISPLAY 10 BITS.X\MAIN ADC10.asm
+             SUMA_DECENAS   0x00018e    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\ADC DISPLAY 10 BITS.X\MAIN ADC10.asm
+            SUMA_UNIDADES   0x000196    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\ADC DISPLAY 10 BITS.X\MAIN ADC10.asm
+          SUMA_UNIDADES10   0x0000f6    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\ADC DISPLAY 10 BITS.X\MAIN ADC10.asm
+               S_CENTENAS   0x00016a    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\ADC DISPLAY 10 BITS.X\MAIN ADC10.asm
+                S_DECENAS   0x000180    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\ADC DISPLAY 10 BITS.X\MAIN ADC10.asm
+        S_UNIDADES_10BITS   0x0000ea    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\ADC DISPLAY 10 BITS.X\MAIN ADC10.asm
+
+
+
+                              Symbols - Sorted by Address
+                     Name    Address   Location    Storage File                     
+                ---------  ---------  ---------  --------- ---------                
+           BAJA_PRIORIDAD   0x000018    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\ADC DISPLAY 10 BITS.X\MAIN ADC10.asm
+                FIN_INTER   0x000022    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\ADC DISPLAY 10 BITS.X\MAIN ADC10.asm
+           ALTA_PRIORIDAD   0x00002e    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\ADC DISPLAY 10 BITS.X\MAIN ADC10.asm
+                   INICIO   0x000032    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\ADC DISPLAY 10 BITS.X\MAIN ADC10.asm
+                PRINCIPAL   0x000060    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\ADC DISPLAY 10 BITS.X\MAIN ADC10.asm
+    CONVERSION_BCD_10BITS   0x00008c    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\ADC DISPLAY 10 BITS.X\MAIN ADC10.asm
+               ASIGNA_512   0x0000a8    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\ADC DISPLAY 10 BITS.X\MAIN ADC10.asm
+                 SUMA_256   0x0000c2    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\ADC DISPLAY 10 BITS.X\MAIN ADC10.asm
+               ASIGNA_256   0x0000d6    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\ADC DISPLAY 10 BITS.X\MAIN ADC10.asm
+        S_UNIDADES_10BITS   0x0000ea    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\ADC DISPLAY 10 BITS.X\MAIN ADC10.asm
+          SUMA_UNIDADES10   0x0000f6    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\ADC DISPLAY 10 BITS.X\MAIN ADC10.asm
+              MAPEA_ADC_0   0x00012c    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\ADC DISPLAY 10 BITS.X\MAIN ADC10.asm
+               DIVIDE_255   0x00013c    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\ADC DISPLAY 10 BITS.X\MAIN ADC10.asm
+           ADC_CONVERSION   0x00014e    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\ADC DISPLAY 10 BITS.X\MAIN ADC10.asm
+                 ADC_PROC   0x000152    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\ADC DISPLAY 10 BITS.X\MAIN ADC10.asm
+           CONVERSION_BCD   0x000162    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\ADC DISPLAY 10 BITS.X\MAIN ADC10.asm
+               S_CENTENAS   0x00016a    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\ADC DISPLAY 10 BITS.X\MAIN ADC10.asm
+            SUMA_CENTENAS   0x000178    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\ADC DISPLAY 10 BITS.X\MAIN ADC10.asm
+                S_DECENAS   0x000180    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\ADC DISPLAY 10 BITS.X\MAIN ADC10.asm
+             SUMA_DECENAS   0x00018e    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\ADC DISPLAY 10 BITS.X\MAIN ADC10.asm
+            SUMA_UNIDADES   0x000196    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\ADC DISPLAY 10 BITS.X\MAIN ADC10.asm
+           CONFIG_RETARDO   0x00019c    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\ADC DISPLAY 10 BITS.X\RETARDOS.INC
+              RET_BOTONES   0x0001a8    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\ADC DISPLAY 10 BITS.X\RETARDOS.INC
+                  RET_X1s   0x0001ce    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\ADC DISPLAY 10 BITS.X\RETARDOS.INC
+               RET_X100ms   0x0001e2    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\ADC DISPLAY 10 BITS.X\RETARDOS.INC
+                RET_X10ms   0x0001f6    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\ADC DISPLAY 10 BITS.X\RETARDOS.INC
+                  RET_Xms   0x00020a    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\ADC DISPLAY 10 BITS.X\RETARDOS.INC
+                RET_100us   0x00021e    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\ADC DISPLAY 10 BITS.X\RETARDOS.INC
+                 RETARDOS   0x00022e    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\ADC DISPLAY 10 BITS.X\RETARDOS.INC
+            CICLO_RETARDO   0x000238    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\ADC DISPLAY 10 BITS.X\RETARDOS.INC
+                 RET_10ms   0x000248    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\ADC DISPLAY 10 BITS.X\RETARDOS.INC
+                  RET_5ms   0x000250    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\ADC DISPLAY 10 BITS.X\RETARDOS.INC
+                  RET_1ms   0x000258    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\ADC DISPLAY 10 BITS.X\RETARDOS.INC
+                RET_100ms   0x000260    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\ADC DISPLAY 10 BITS.X\RETARDOS.INC
+                RET_500ms   0x000268    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\ADC DISPLAY 10 BITS.X\RETARDOS.INC
+                   RET_1s   0x00028e    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\ADC DISPLAY 10 BITS.X\RETARDOS.INC
+
+
