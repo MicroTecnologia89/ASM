@@ -1,0 +1,1875 @@
+MPASM 5.87                  STEPPER_MAIN.ASM   8-14-2021  1:04:37         PAGE  1
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+Warning[205]: Found directive in column 1. (List)
+                      00001 List p=18F26k22
+                      00002 #include "p18f26k22.inc"
+                      00001         LIST
+                      00002 
+                      00003 ;==========================================================================
+                      00004 ; Build date : Jan 06 2020
+                      00005 ;  MPASM PIC18F26K22 processor include
+                      00006 ; 
+                      00007 ;  (c) Copyright 1999-2020 Microchip Technology, All rights reserved
+                      00008 ;==========================================================================
+                      00009 
+                      02671         LIST
+                      00003 
+                      00004 ; CONFIG1H
+                      00005   CONFIG  FOSC = INTIO67           ; Oscillator Selection bits (HS oscillator (medium power 4-16 MHz))
+                      00006   CONFIG  PLLCFG = ON           ; 4X PLL Enable (Oscillator multiplied by 4)
+                      00007   CONFIG  PRICLKEN = ON         ; Primary clock enable bit (Primary clock enabled)
+                      00008   CONFIG  FCMEN = OFF           ; Fail-Safe Clock Monitor Enable bit (Fail-Safe Clock Monitor disabled)
+                      00009   CONFIG  IESO = OFF            ; Internal/External Oscillator Switchover bit (Oscillator Switchover mod
+                            e disabled)
+                      00010 
+                      00011 ; CONFIG2L
+                      00012   CONFIG  PWRTEN = OFF          ; Power-up Timer Enable bit (Power up timer disabled)
+                      00013   CONFIG  BOREN = SBORDIS       ; Brown-out Reset Enable bits (Brown-out Reset enabled in hardware only 
+                            (SBOREN is disabled))
+                      00014   CONFIG  BORV = 190            ; Brown Out Reset Voltage bits (VBOR set to 1.90 V nominal)
+                      00015 
+                      00016 ; CONFIG2H
+                      00017   CONFIG  WDTEN = OFF            ; Watchdog Timer Enable bits (WDT is always enabled. SWDTEN bit has no 
+                            effect)
+                      00018   CONFIG  WDTPS = 32768         ; Watchdog Timer Postscale Select bits (1:32768)
+                      00019 
+                      00020 ; CONFIG3H
+                      00021   CONFIG  CCP2MX = PORTC1       ; CCP2 MUX bit (CCP2 input/output is multiplexed with RC1)
+                      00022   CONFIG  PBADEN = OFF          ; PORTB A/D Enable bit (PORTB<5:0> pins are configured as digital I/O on
+                             Reset)
+                      00023   CONFIG  CCP3MX = PORTB5       ; P3A/CCP3 Mux bit (P3A/CCP3 input/output is multiplexed with RB5)
+                      00024   CONFIG  HFOFST = ON           ; HFINTOSC Fast Start-up (HFINTOSC output and ready status are not delay
+                            ed by the oscillator stable status)
+                      00025   CONFIG  T3CMX = PORTC0        ; Timer3 Clock input mux bit (T3CKI is on RC0)
+                      00026   CONFIG  P2BMX = PORTB5        ; ECCP2 B output mux bit (P2B is on RB5)
+                      00027   CONFIG  MCLRE = INTMCLR       ; MCLR Pin Enable bit (RE3 input pin enabled; MCLR disabled)
+                      00028 
+                      00029 ; CONFIG4L
+                      00030   CONFIG  STVREN = ON           ; Stack Full/Underflow Reset Enable bit (Stack full/underflow will cause
+                             Reset)
+                      00031   CONFIG  LVP = OFF             ; Single-Supply ICSP Enable bit (Single-Supply ICSP disabled)
+                      00032   CONFIG  XINST = OFF           ; Extended Instruction Set Enable bit (Instruction set extension and Ind
+                            exed Addressing mode disabled (Legacy mode))
+                      00033 
+                      00034 ; CONFIG5L
+                      00035   CONFIG  CP0 = OFF             ; Code Protection Block 0 (Block 0 (000800-003FFFh) not code-protected)
+MPASM 5.87                  STEPPER_MAIN.ASM   8-14-2021  1:04:37         PAGE  2
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+                      00036   CONFIG  CP1 = OFF             ; Code Protection Block 1 (Block 1 (004000-007FFFh) not code-protected)
+                      00037   CONFIG  CP2 = OFF             ; Code Protection Block 2 (Block 2 (008000-00BFFFh) not code-protected)
+                      00038   CONFIG  CP3 = OFF             ; Code Protection Block 3 (Block 3 (00C000-00FFFFh) not code-protected)
+                      00039 
+                      00040 ; CONFIG5H
+                      00041   CONFIG  CPB = OFF             ; Boot Block Code Protection bit (Boot block (000000-0007FFh) not code-p
+                            rotected)
+                      00042   CONFIG  CPD = OFF             ; Data EEPROM Code Protection bit (Data EEPROM not code-protected)
+                      00043 
+                      00044 ; CONFIG6L
+                      00045   CONFIG  WRT0 = OFF            ; Write Protection Block 0 (Block 0 (000800-003FFFh) not write-protected
+                            )
+                      00046   CONFIG  WRT1 = OFF            ; Write Protection Block 1 (Block 1 (004000-007FFFh) not write-protected
+                            )
+                      00047   CONFIG  WRT2 = OFF            ; Write Protection Block 2 (Block 2 (008000-00BFFFh) not write-protected
+                            )
+                      00048   CONFIG  WRT3 = OFF            ; Write Protection Block 3 (Block 3 (00C000-00FFFFh) not write-protected
+                            )
+                      00049 
+                      00050 ; CONFIG6H
+                      00051   CONFIG  WRTC = OFF            ; Configuration Register Write Protection bit (Configuration registers (
+                            300000-3000FFh) not write-protected)
+                      00052   CONFIG  WRTB = OFF            ; Boot Block Write Protection bit (Boot Block (000000-0007FFh) not write
+                            -protected)
+                      00053   CONFIG  WRTD = OFF            ; Data EEPROM Write Protection bit (Data EEPROM not write-protected)
+                      00054 
+                      00055 ; CONFIG7L
+                      00056   CONFIG  EBTR0 = OFF           ; Table Read Protection Block 0 (Block 0 (000800-003FFFh) not protected 
+                            from table reads executed in other blocks)
+                      00057   CONFIG  EBTR1 = OFF           ; Table Read Protection Block 1 (Block 1 (004000-007FFFh) not protected 
+                            from table reads executed in other blocks)
+                      00058   CONFIG  EBTR2 = OFF           ; Table Read Protection Block 2 (Block 2 (008000-00BFFFh) not protected 
+                            from table reads executed in other blocks)
+                      00059   CONFIG  EBTR3 = OFF           ; Table Read Protection Block 3 (Block 3 (00C000-00FFFFh) not protected 
+                            from table reads executed in other blocks)
+                      00060 
+                      00061 ; CONFIG7H
+                      00062   CONFIG  EBTRB = OFF           ; Boot Block Table Read Protection bit (Boot Block (000000-0007FFh) not 
+                            protected from table reads executed in other blocks)
+                      00063 
+                      00064         
+                      00065         
+                      00066         CBLOCK  0x00
+  00000000            00067         W_TEMP
+  00000001            00068         STATUS_TEMP
+  00000002            00069         BSR_TEMP
+                      00070 
+                      00071 
+                      00072         ENDC
+                      00073 ;*********************************************************************************
+                      00074 ;****************** ORIGEN DE EJECUCION POSTERIOR AL RESET ***********************
+                      00075 ;*********************************************************************************
+                      00076         ORG     0x000                   ; ORIGEN INICIO RESET
+MPASM 5.87                  STEPPER_MAIN.ASM   8-14-2021  1:04:37         PAGE  3
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+000000 EF?? F???      00077         GOTO    INICIO                  ; ME VOY A INICIO
+                      00078         ORG     0x008                   ; ORIGEN ISR ALTA PRIORIDAD
+000008 EF?? F???      00079         GOTO    BAJA_PRIORIDAD
+                      00080         ORG     0x018                   ; ORIGEN ISR BAJA PRIORIDAD
+000018                00081 BAJA_PRIORIDAD
+000018 6E00           00082         MOVWF   W_TEMP                  ; MUEVO EL ULTIMA VALOR DE W 
+00001A CFD8 F001      00083         MOVFF   STATUS,STATUS_TEMP      ; DE STATUS Y DE BSR
+00001E CFE0 F002      00084         MOVFF   BSR,BSR_TEMP            ; PARA RESTAURARLOS AL VALOR ANTES DE LA INTERRUPCION
+000022                00085 FIN_INTER
+000022 6E00           00086         MOVWF   W_TEMP                  ; MUEVO EL ULTIMA VALOR DE W 
+000024 CFD8 F001      00087         MOVFF   STATUS,STATUS_TEMP      ; DE STATUS Y DE BSR
+000028 CFE0 F002      00088         MOVFF   BSR,BSR_TEMP            ; PARA RESTAURARLOS AL VALOR ANTES DE LA INTERRUPCION
+00002C 0012           00089         RETURN                          ; REGRESO DE INTERRUPCION
+00002E                00090 ALTA_PRIORIDAD
+00002E EF?? F???      00091         GOTO    FIN_INTER               ; VE A FINAL DE INTERRUPCION
+                      00092         
+                      00093 ;*********************************************************************************
+                      00094 ;**************************CONFIGURACIÓN DE PUERTOS ******************************
+                      00095 ;*********************************************************************************
+000032                00096 INICIO
+                      00097 
+000032 8CD3           00098         BSF     OSCCON,IRCF2                    ;CONFIGURO EL OSCILADOR INTERNO
+000034 8AD3           00099         BSF     OSCCON,IRCF1                    ;A 16MHZ
+000036 88D3           00100         BSF     OSCCON,IRCF0
+000038 8C9B           00101         BSF     OSCTUNE,PLLEN
+00003A 6A60           00102         CLRF    SLRCON          
+                      00103         
+00003C 010F           00104         MOVLB   0xF                     ; PARA ACCEDER CORRECTAMENTE
+00003E 6B38           00105         CLRF    ANSELA                  ; ANALOGICAS NECESARIAS Y LO
+000040 6B39           00106         CLRF    ANSELB                  ; DEMAS COMO ENTRADAS Y SALIDAS
+000042 6B3A           00107         CLRF    ANSELC                  ; DIGITALES
+                      00108 
+                      00109         
+000044 010F           00110         MOVLB 0xF
+000046 6A80           00111         CLRF    PORTA                   ; LIMPIO EL PUERTO A
+000048 6A81           00112         CLRF    PORTB                   ; LIMPIO EL PUERTO B
+00004A 6A82           00113         CLRF    PORTC                   ; LIMPIO EL PUERTO C
+00004C 0100           00114         MOVLB   0X0                     ; PARA ACCEDER CORRECTAMENTE    
+00004E 6A89           00115         CLRF    LATA                    ; LIMPIO LATCH A
+000050 6A8A           00116         CLRF    LATB                    ; LIMPIO LATCH B
+000052 6A8B           00117         CLRF    LATC                    ; LIMPIO LATCH C
+                      00118         
+                      00119 
+000054 6A92           00120         CLRF    TRISA                   ; SALIDAS DIGITALES PUERTO A
+000056 6A93           00121         CLRF    TRISB                   ; SALIDAS DIGITALES PUERTO B
+000058 6A94           00122         CLRF    TRISC                   ; SALIDAS DIGITALES PUERTO C
+                      00123 
+00005A 0EFF           00124         MOVLW   B'11111111'
+00005C 6E92           00125         MOVWF   TRISA
+                      00126         
+                      00127 ;*********************************************************************************
+                      00128 ;**************************CONFIGURACIÓN DE RETARDOS *****************************
+                      00129 ;*********************************************************************************
+MPASM 5.87                  STEPPER_MAIN.ASM   8-14-2021  1:04:37         PAGE  4
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+                      00130 
+                      00131 ;*********************************************************************************
+                      00132 ;**************************  ZONA DE CODIGO USUARIO  *****************************
+                      00133 ;*********************************************************************************
+                      00134     
+                      00135 
+                      00136         #DEFINE MOV_CW      PORTA,0
+                      00137         #DEFINE MOV_CCW     PORTA,1
+                      00138 
+                      00139 
+00005E                00140 PRINCIPAL
+00005E A080           00141         BTFSS   MOV_CW
+000060 EC?? F???      00142         CALL    GIRO_CW
+000064 A280           00143         BTFSS   MOV_CCW
+000066 EC?? F???      00144         CALL    GIRO_CCW        
+00006A EF?? F???      00145         GOTO    PRINCIPAL       
+00006E                00146 GIRO_CW 
+00006E 0E01           00147         MOVLW   B'00000001'
+000070 6E8A           00148         MOVWF   LATB
+000072 EC?? F???      00149         CALL    RET_10ms
+                      00150         
+000076 0E04           00151         MOVLW   B'00000100'
+000078 6E8A           00152         MOVWF   LATB
+00007A EC?? F???      00153         CALL    RET_10ms
+                      00154 
+00007E 0E02           00155         MOVLW   B'00000010'
+000080 6E8A           00156         MOVWF   LATB
+000082 EC?? F???      00157         CALL    RET_10ms
+                      00158         
+000086 0E08           00159         MOVLW   B'00001000'
+000088 6E8A           00160         MOVWF   LATB
+00008A EC?? F???      00161         CALL    RET_10ms        
+                      00162         
+00008E 0E00           00163         MOVLW   B'00000000'
+000090 6E8A           00164         MOVWF   LATB    
+000092 0012           00165         RETURN
+000094                00166 GIRO_CCW
+                      00167 ;       MOVLW   B'00001000'
+                      00168 ;       MOVWF   LATB
+                      00169 ;       CALL    RET_5ms
+                      00170 ;       
+                      00171 ;       MOVLW   B'00000100'
+                      00172 ;       MOVWF   LATB
+                      00173 ;       CALL    RET_5ms
+                      00174 ;
+                      00175 ;       MOVLW   B'00000010'
+                      00176 ;       MOVWF   LATB
+                      00177 ;       CALL    RET_5ms
+                      00178 ;       
+                      00179 ;       MOVLW   B'00000001'
+                      00180 ;       MOVWF   LATB
+                      00181 ;       CALL    RET_5ms
+000094 0012           00182         RETURN
+MPASM 5.87                  STEPPER_MAIN.ASM   8-14-2021  1:04:37         PAGE  5
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+                      00183         
+                      00184 
+                      00185 
+                      00186 
+                      00187 #INCLUDE<RETARDOS.INC>
+Warning[205]: Found directive in column 1. (CBLOCK)
+                      00001 CBLOCK
+  00000003            00002     VAR_X
+Warning[205]: Found directive in column 1. (ENDC)
+                      00003 ENDC
+                      00004 
+000096                00005 RET_SERVO
+000096 0E03           00006         MOVLW   B'00000011'             ; TIMER 0 16 BITS
+000098 6ED5           00007         MOVWF   T0CON   
+00009A 94F2           00008         BCF     INTCON,TMR0IF
+00009C 0EFF           00009         MOVLW   0XFF
+00009E 6ED7           00010         MOVWF   TMR0H
+0000A0 0EFA           00011         MOVLW   0XFA
+0000A2 6ED6           00012         MOVWF   TMR0L
+0000A4 8ED5           00013         BSF     T0CON,TMR0ON
+0000A6 EF?? F???      00014         GOTO    CICLO_RETARDO           
+                      00015 
+0000AA                00016 RET_1s
+0000AA 0E07           00017         MOVLW   B'00000111'             ; TIMER 0 16 BITS
+0000AC 6ED5           00018         MOVWF   T0CON                   ; PREESCALER 256
+0000AE 94F2           00019         BCF     INTCON,TMR0IF
+0000B0 0E0B           00020         MOVLW   0X0B
+0000B2 6ED7           00021         MOVWF   TMR0H
+0000B4 0EDB           00022         MOVLW   0XDB
+0000B6 6ED6           00023         MOVWF   TMR0L
+0000B8 8ED5           00024         BSF     T0CON,TMR0ON
+0000BA EF?? F???      00025         GOTO    CICLO_RETARDO   
+                      00026         
+0000BE                00027 RET_500ms
+0000BE 0E07           00028         MOVLW   B'00000111'             ; TIMER 0 16 BITS
+0000C0 6ED5           00029         MOVWF   T0CON                   ; PREESCALER 256
+0000C2 94F2           00030         BCF     INTCON,TMR0IF
+0000C4 0E85           00031         MOVLW   0X85
+0000C6 6ED7           00032         MOVWF   TMR0H
+0000C8 0EED           00033         MOVLW   0XED
+0000CA 6ED6           00034         MOVWF   TMR0L
+0000CC 8ED5           00035         BSF     T0CON,TMR0ON
+0000CE EF?? F???      00036         GOTO    CICLO_RETARDO   
+0000D2                00037 RET_100ms
+0000D2 0E04           00038         MOVLW   B'00000100'             ; TIMER 0 16 BITS
+0000D4 6ED5           00039         MOVWF   T0CON   
+0000D6 94F2           00040         BCF     INTCON,TMR0IF
+0000D8 0E3C           00041         MOVLW   0X3C
+0000DA 6ED7           00042         MOVWF   TMR0H
+0000DC 0EAF           00043         MOVLW   0XAF
+0000DE 6ED6           00044         MOVWF   TMR0L
+0000E0 8ED5           00045         BSF     T0CON,TMR0ON
+0000E2 EF?? F???      00046         GOTO    CICLO_RETARDO   
+MPASM 5.87                  STEPPER_MAIN.ASM   8-14-2021  1:04:37         PAGE  6
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+0000E6                00047 RET_50ms
+0000E6 0E04           00048         MOVLW   B'00000100'             ; TIMER 0 16 BITS
+0000E8 6ED5           00049         MOVWF   T0CON   
+0000EA 94F2           00050         BCF     INTCON,TMR0IF
+0000EC 0E9E           00051         MOVLW   0X9E
+0000EE 6ED7           00052         MOVWF   TMR0H
+0000F0 0E57           00053         MOVLW   0X57
+0000F2 6ED6           00054         MOVWF   TMR0L
+0000F4 8ED5           00055         BSF     T0CON,TMR0ON
+0000F6 EF?? F???      00056         GOTO    CICLO_RETARDO   
+0000FA                00057 RET_33ms
+0000FA 0E04           00058         MOVLW   B'00000100'             ; TIMER 0 16 BITS
+0000FC 6ED5           00059         MOVWF   T0CON   
+0000FE 94F2           00060         BCF     INTCON,TMR0IF
+000100 0EBF           00061         MOVLW   0XBF
+000102 6ED7           00062         MOVWF   TMR0H
+000104 0E8B           00063         MOVLW   0X8B
+000106 6ED6           00064         MOVWF   TMR0L
+000108 8ED5           00065         BSF     T0CON,TMR0ON
+00010A EF?? F???      00066         GOTO    CICLO_RETARDO   
+00010E                00067 RET_16ms
+00010E 0E04           00068         MOVLW   B'00000100'             ; TIMER 0 16 BITS
+000110 6ED5           00069         MOVWF   T0CON   
+000112 94F2           00070         BCF     INTCON,TMR0IF
+000114 0EE0           00071         MOVLW   0XE0
+000116 6ED7           00072         MOVWF   TMR0H
+000118 0EBF           00073         MOVLW   0XBF
+00011A 6ED6           00074         MOVWF   TMR0L
+00011C 8ED5           00075         BSF     T0CON,TMR0ON
+00011E EF?? F???      00076         GOTO    CICLO_RETARDO   
+000122                00077 RET_18ms
+000122 0E04           00078         MOVLW   B'00000100'             ; TIMER 0 16 BITS
+000124 6ED5           00079         MOVWF   T0CON   
+000126 94F2           00080         BCF     INTCON,TMR0IF
+000128 0EDC           00081         MOVLW   0XDC
+00012A 6ED7           00082         MOVWF   TMR0H
+00012C 0ED7           00083         MOVLW   0XD7
+00012E 6ED6           00084         MOVWF   TMR0L
+000130 8ED5           00085         BSF     T0CON,TMR0ON
+000132 EF?? F???      00086         GOTO    CICLO_RETARDO   
+000136                00087 RET_10ms
+000136 0E03           00088         MOVLW   B'00000011'             ; TIMER 0 16 BITS
+000138 6ED5           00089         MOVWF   T0CON   
+00013A 94F2           00090         BCF     INTCON,TMR0IF
+00013C 0ED8           00091         MOVLW   0XD8
+00013E 6ED7           00092         MOVWF   TMR0H
+000140 0EF0           00093         MOVLW   0XF0
+000142 6ED6           00094         MOVWF   TMR0L
+000144 8ED5           00095         BSF     T0CON,TMR0ON
+000146 EF?? F???      00096         GOTO    CICLO_RETARDO   
+00014A                00097 RET_5ms
+00014A 0E00           00098         MOVLW   B'00000000'             ; TIMER 0 16 BITS
+00014C 6ED5           00099         MOVWF   T0CON   
+MPASM 5.87                  STEPPER_MAIN.ASM   8-14-2021  1:04:37         PAGE  7
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+00014E 94F2           00100         BCF     INTCON,TMR0IF
+000150 0E63           00101         MOVLW   .99
+000152 6ED7           00102         MOVWF   TMR0H
+000154 0E52           00103         MOVLW   .82
+000156 6ED6           00104         MOVWF   TMR0L   
+000158 8ED5           00105         BSF     T0CON,TMR0ON
+00015A EF?? F???      00106         GOTO    CICLO_RETARDO
+00015E                00107 RET_500us
+00015E 0E04           00108         MOVLW   B'00000100'             ; TIMER 0 16 BITS
+000160 6ED5           00109         MOVWF   T0CON   
+000162 94F2           00110         BCF     INTCON,TMR0IF
+000164 0EFF           00111         MOVLW   0XFF
+000166 6ED7           00112         MOVWF   TMR0H
+000168 0E05           00113         MOVLW   0X05
+00016A 6ED6           00114         MOVWF   TMR0L
+00016C 8ED5           00115         BSF     T0CON,TMR0ON
+00016E EF?? F???      00116         GOTO    CICLO_RETARDO
+000172                00117 RET_250us
+000172 0E04           00118         MOVLW   B'00000100'             ; TIMER 0 16 BITS
+000174 6ED5           00119         MOVWF   T0CON   
+000176 94F2           00120         BCF     INTCON,TMR0IF
+000178 0EFF           00121         MOVLW   0XFF
+00017A 6ED7           00122         MOVWF   TMR0H
+00017C 0E82           00123         MOVLW   0X82
+00017E 6ED6           00124         MOVWF   TMR0L
+000180 8ED5           00125         BSF     T0CON,TMR0ON
+000182 EF?? F???      00126         GOTO    CICLO_RETARDO
+000186                00127 RET_1ms
+000186 0E04           00128         MOVLW   B'00000100'             ; TIMER 0 16 BITS
+000188 6ED5           00129         MOVWF   T0CON   
+00018A 94F2           00130         BCF     INTCON,TMR0IF
+00018C 0EFE           00131         MOVLW   0XFE
+00018E 6ED7           00132         MOVWF   TMR0H
+000190 0E0D           00133         MOVLW   0X0D
+000192 6ED6           00134         MOVWF   TMR0L
+000194 8ED5           00135         BSF     T0CON,TMR0ON
+000196 EF?? F???      00136         GOTO    CICLO_RETARDO
+00019A                00137 CICLO_RETARDO   
+00019A A4F2           00138         BTFSS   INTCON,TMR0IF
+00019C EF?? F???      00139         GOTO    CICLO_RETARDO
+0001A0 94F2           00140         BCF     INTCON,TMR0IF
+0001A2 9ED5           00141         BCF     T0CON,TMR0ON
+0001A4 0012           00142         RETURN
+                      00143 
+                      00144 
+                      00188         
+                      00189         END     
+MPASM 5.87                  STEPPER_MAIN.ASM   8-14-2021  1:04:37         PAGE  8
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+A                                 00000000
+ABDEN                             00000000
+ABDOVF                            00000007
+ACCESS                            00000000
+ACKDT                             00000005
+ACKEN                             00000004
+ACKSTAT                           00000006
+ACKTIM                            00000007
+ACQT0                             00000003
+ACQT1                             00000004
+ACQT2                             00000005
+ADCMD                             00000000
+ADCON0                            00000FC2
+ADCON1                            00000FC1
+ADCON2                            00000FC0
+ADCS0                             00000000
+ADCS1                             00000001
+ADCS2                             00000002
+ADDEN                             00000003
+ADDEN1                            00000003
+ADDEN2                            00000003
+ADEN                              00000003
+ADFM                              00000007
+ADIE                              00000006
+ADIF                              00000006
+ADIP                              00000006
+ADON                              00000000
+ADRES                             00000FC3
+ADRESH                            00000FC4
+ADRESL                            00000FC3
+AHEN                              00000001
+ALTA_PRIORIDAD                    0000002E
+AN0                               00000000
+AN1                               00000001
+AN10                              00000001
+AN11                              00000004
+AN12                              00000000
+AN13                              00000005
+AN14                              00000002
+AN15                              00000003
+AN16                              00000004
+AN17                              00000005
+AN18                              00000006
+AN19                              00000007
+AN2                               00000002
+AN3                               00000003
+AN4                               00000005
+AN8                               00000002
+AN9                               00000003
+ANSA0                             00000000
+ANSA1                             00000001
+ANSA2                             00000002
+ANSA3                             00000003
+MPASM 5.87                  STEPPER_MAIN.ASM   8-14-2021  1:04:37         PAGE  9
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+ANSA5                             00000005
+ANSB0                             00000000
+ANSB1                             00000001
+ANSB2                             00000002
+ANSB3                             00000003
+ANSB4                             00000004
+ANSB5                             00000005
+ANSC2                             00000002
+ANSC3                             00000003
+ANSC4                             00000004
+ANSC5                             00000005
+ANSC6                             00000006
+ANSC7                             00000007
+ANSELA                            00000F38
+ANSELB                            00000F39
+ANSELC                            00000F3A
+BAJA_PRIORIDAD                    00000018
+BANKED                            00000001
+BAUD1CON                          00000FB8
+BAUD2CON                          00000F70
+BAUDCON                           00000FB8
+BAUDCON1                          00000FB8
+BAUDCON2                          00000F70
+BAUDCTL                           00000FB8
+BCL1IE                            00000003
+BCL1IF                            00000003
+BCL1IP                            00000003
+BCL2IE                            00000006
+BCL2IF                            00000006
+BCL2IP                            00000006
+BCLIE                             00000003
+BCLIF                             00000003
+BCLIP                             00000003
+BF                                00000000
+BGST                              00000005
+BGVST                             00000006
+BOEN                              00000004
+BOR                               00000000
+BRG16                             00000003
+BRGH                              00000002
+BRGH1                             00000002
+BRGH2                             00000002
+BSR                               00000FE0
+BSR_TEMP                          00000002
+C                                 00000000
+C12IN0M                           00000000
+C12IN0N                           00000000
+C12IN1M                           00000001
+C12IN1N                           00000001
+C12IN2M                           00000003
+C12IN2N                           00000003
+C12IN3M                           00000001
+C12IN3N                           00000001
+MPASM 5.87                  STEPPER_MAIN.ASM   8-14-2021  1:04:37         PAGE 10
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+C1CH0                             00000000
+C1CH1                             00000001
+C1HYS                             00000003
+C1IE                              00000006
+C1IF                              00000006
+C1INP                             00000003
+C1IP                              00000006
+C1OE                              00000005
+C1ON                              00000007
+C1OUT_CM1CON                      00000006
+C1OUT_CM1CON0                     00000006
+C1OUT_PORTA                       00000004
+C1POL                             00000004
+C1R                               00000002
+C1RSEL                            00000005
+C1SP                              00000003
+C1SYNC                            00000001
+C1TSEL0                           00000000
+C1TSEL1                           00000001
+C2CH0                             00000000
+C2CH1                             00000001
+C2HYS                             00000002
+C2IE                              00000005
+C2IF                              00000005
+C2INP                             00000002
+C2IP                              00000005
+C2OE                              00000005
+C2ON                              00000007
+C2OUT_CM2CON                      00000006
+C2OUT_CM2CON0                     00000006
+C2OUT_PORTA                       00000005
+C2POL                             00000004
+C2R                               00000002
+C2RSEL                            00000004
+C2SP                              00000003
+C2SYNC                            00000000
+C2TSEL0                           00000003
+C2TSEL1                           00000004
+C3TSEL0                           00000006
+C3TSEL1                           00000007
+C4TSEL0                           00000000
+C4TSEL1                           00000001
+C5TSEL0                           00000002
+C5TSEL1                           00000003
+CCP1                              00000002
+CCP1AS0                           00000004
+CCP1AS1                           00000005
+CCP1AS2                           00000006
+CCP1ASE                           00000007
+CCP1CON                           00000FBD
+CCP1IE                            00000002
+CCP1IF                            00000002
+CCP1IP                            00000002
+MPASM 5.87                  STEPPER_MAIN.ASM   8-14-2021  1:04:37         PAGE 11
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+CCP1M0                            00000000
+CCP1M1                            00000001
+CCP1M2                            00000002
+CCP1M3                            00000003
+CCP1MD                            00000000
+CCP2AS                            00000F64
+CCP2AS0                           00000004
+CCP2AS1                           00000005
+CCP2AS2                           00000006
+CCP2ASE                           00000007
+CCP2CON                           00000F66
+CCP2IE                            00000000
+CCP2IF                            00000000
+CCP2IP                            00000000
+CCP2M0                            00000000
+CCP2M1                            00000001
+CCP2M2                            00000002
+CCP2M3                            00000003
+CCP2MD                            00000001
+CCP2_PORTB                        00000003
+CCP2_PORTC                        00000001
+CCP3AS                            00000F5B
+CCP3AS0                           00000004
+CCP3AS1                           00000005
+CCP3AS2                           00000006
+CCP3ASE                           00000007
+CCP3CON                           00000F5D
+CCP3IE                            00000000
+CCP3IF                            00000000
+CCP3IP                            00000000
+CCP3M0                            00000000
+CCP3M1                            00000001
+CCP3M2                            00000002
+CCP3M3                            00000003
+CCP3MD                            00000002
+CCP3_PORTB                        00000005
+CCP3_PORTC                        00000006
+CCP4                              00000000
+CCP4CON                           00000F57
+CCP4IE                            00000001
+CCP4IF                            00000001
+CCP4IP                            00000001
+CCP4M0                            00000000
+CCP4M1                            00000001
+CCP4M2                            00000002
+CCP4M3                            00000003
+CCP4MD                            00000003
+CCP5                              00000004
+CCP5CON                           00000F54
+CCP5IE                            00000002
+CCP5IF                            00000002
+CCP5IP                            00000002
+CCP5M0                            00000000
+MPASM 5.87                  STEPPER_MAIN.ASM   8-14-2021  1:04:37         PAGE 12
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+CCP5M1                            00000001
+CCP5M2                            00000002
+CCP5M3                            00000003
+CCP5MD                            00000004
+CCPR1                             00000FBE
+CCPR1H                            00000FBF
+CCPR1L                            00000FBE
+CCPR2                             00000F67
+CCPR2H                            00000F68
+CCPR2L                            00000F67
+CCPR3                             00000F5E
+CCPR3H                            00000F5F
+CCPR3L                            00000F5E
+CCPR4                             00000F58
+CCPR4H                            00000F59
+CCPR4L                            00000F58
+CCPR5                             00000F55
+CCPR5H                            00000F56
+CCPR5L                            00000F55
+CCPTMRS0                          00000F49
+CCPTMRS1                          00000F48
+CFGS                              00000006
+CHS0                              00000002
+CHS1                              00000003
+CHS2                              00000004
+CHS3                              00000005
+CHS4                              00000006
+CICLO_RETARDO                     0000019A
+CK                                00000006
+CK1                               00000006
+CK2                               00000006
+CKE                               00000006
+CKP                               00000004
+CKTXP                             00000004
+CM12CON                           00000F77
+CM1CON                            00000F79
+CM1CON0                           00000F79
+CM2CON                            00000F78
+CM2CON0                           00000F78
+CM2CON1                           00000F77
+CMP1MD                            00000001
+CMP2MD                            00000002
+CREN                              00000004
+CREN1                             00000004
+CREN2                             00000004
+CSRC                              00000007
+CSRC1                             00000007
+CSRC2                             00000007
+CTED1                             00000002
+CTED2                             00000003
+CTMUCON0                          00000F45
+CTMUCON1                          00000F44
+CTMUCONH                          00000F45
+MPASM 5.87                  STEPPER_MAIN.ASM   8-14-2021  1:04:37         PAGE 13
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+CTMUCONL                          00000F44
+CTMUEN                            00000007
+CTMUICON                          00000F43
+CTMUICONH                         00000F43
+CTMUIE                            00000003
+CTMUIF                            00000003
+CTMUIP                            00000003
+CTMUMD                            00000003
+CTMUSIDL                          00000005
+CTPLS                             00000002
+CTTRIG                            00000000
+CVREF                             00000002
+D                                 00000005
+DACCON0                           00000F41
+DACCON1                           00000F40
+DACEN                             00000007
+DACLPS                            00000006
+DACNSS                            00000000
+DACOE                             00000005
+DACOUT                            00000002
+DACPSS0                           00000002
+DACPSS1                           00000003
+DACR0                             00000000
+DACR1                             00000001
+DACR2                             00000002
+DACR3                             00000003
+DACR4                             00000004
+DC                                00000001
+DC1B0                             00000004
+DC1B1                             00000005
+DC2B0                             00000004
+DC2B1                             00000005
+DC3B0                             00000004
+DC3B1                             00000005
+DC4B0                             00000004
+DC4B1                             00000005
+DC5B0                             00000004
+DC5B1                             00000005
+DDRA                              TRISA
+DDRB                              TRISB
+DDRC                              TRISC
+DDRD                              TRISD
+DDRE                              TRISE
+DHEN                              00000000
+DONE                              00000001
+DT1                               00000007
+DT2                               00000007
+DTRXP                             00000005
+D_A                               00000005
+D_NOT_A                           00000005
+ECCP1AS                           00000FB6
+ECCP2AS                           00000F64
+ECCP3AS                           00000F5B
+MPASM 5.87                  STEPPER_MAIN.ASM   8-14-2021  1:04:37         PAGE 14
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+ECCPAS                            00000FB6
+ECCPAS0                           00000004
+ECCPAS1                           00000005
+ECCPAS2                           00000006
+ECCPASE                           00000007
+EDG1POL                           00000004
+EDG1SEL0                          00000002
+EDG1SEL1                          00000003
+EDG1STAT                          00000000
+EDG2POL                           00000007
+EDG2SEL0                          00000005
+EDG2SEL1                          00000006
+EDG2STAT                          00000001
+EDGEN                             00000003
+EDGSEQEN                          00000002
+EEADR                             00000FA9
+EEADR0                            00000000
+EEADR1                            00000001
+EEADR2                            00000002
+EEADR3                            00000003
+EEADR4                            00000004
+EEADR5                            00000005
+EEADR6                            00000006
+EEADR7                            00000007
+EEADR8                            00000000
+EEADR9                            00000001
+EEADRH                            00000FAA
+EECON1                            00000FA6
+EECON2                            00000FA7
+EEDATA                            00000FA8
+EEIE                              00000004
+EEIF                              00000004
+EEIP                              00000004
+EEPGD                             00000007
+FAST                              00000001
+FERR                              00000002
+FERR1                             00000002
+FERR2                             00000002
+FIN_INTER                         00000022
+FLT0                              00000000
+FREE                              00000004
+FSR0                              00000000
+FSR0H                             00000FEA
+FSR0L                             00000FE9
+FSR1                              00000001
+FSR1H                             00000FE2
+FSR1L                             00000FE1
+FSR2                              00000002
+FSR2H                             00000FDA
+FSR2L                             00000FD9
+FVRCON                            00000F42
+FVREN                             00000007
+FVRS0                             00000004
+MPASM 5.87                  STEPPER_MAIN.ASM   8-14-2021  1:04:37         PAGE 15
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+FVRS1                             00000005
+FVRST                             00000006
+GCEN                              00000007
+GIE                               00000007
+GIEH                              00000007
+GIEL                              00000006
+GIE_GIEH                          00000007
+GIRO_CCW                          00000094
+GIRO_CW                           0000006E
+GO                                00000001
+GO_DONE                           00000001
+GO_NOT_DONE                       00000001
+HFIOFS                            00000002
+HLVDCON                           00000F9C
+HLVDEN                            00000004
+HLVDIE                            00000002
+HLVDIF                            00000002
+HLVDIN                            00000005
+HLVDIP                            00000002
+HLVDL0                            00000000
+HLVDL1                            00000001
+HLVDL2                            00000002
+HLVDL3                            00000003
+IDISSEN                           00000001
+IDLEN                             00000007
+INDF0                             00000FEF
+INDF1                             00000FE7
+INDF2                             00000FDF
+INICIO                            00000032
+INT0                              00000000
+INT0E                             00000004
+INT0F                             00000001
+INT0IE                            00000004
+INT0IF                            00000001
+INT1                              00000001
+INT1E                             00000003
+INT1F                             00000000
+INT1IE                            00000003
+INT1IF                            00000000
+INT1IP                            00000006
+INT1P                             00000006
+INT2                              00000002
+INT2E                             00000004
+INT2F                             00000001
+INT2IE                            00000004
+INT2IF                            00000001
+INT2IP                            00000007
+INT2P                             00000007
+INTCON                            00000FF2
+INTCON2                           00000FF1
+INTCON3                           00000FF0
+INTEDG0                           00000006
+INTEDG1                           00000005
+MPASM 5.87                  STEPPER_MAIN.ASM   8-14-2021  1:04:37         PAGE 16
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+INTEDG2                           00000004
+INTSRC                            00000007
+IOCB                              00000F62
+IOCB4                             00000004
+IOCB5                             00000005
+IOCB6                             00000006
+IOCB7                             00000007
+IOFS                              00000002
+IPEN                              00000007
+IPR1                              00000F9F
+IPR2                              00000FA2
+IPR3                              00000FA5
+IPR4                              00000F7C
+IPR5                              00000F7F
+IRCF0                             00000004
+IRCF1                             00000005
+IRCF2                             00000006
+IRNG0                             00000000
+IRNG1                             00000001
+IRVST                             00000005
+ITRIM0                            00000002
+ITRIM1                            00000003
+ITRIM2                            00000004
+ITRIM3                            00000005
+ITRIM4                            00000006
+ITRIM5                            00000007
+IVRST                             00000005
+KBI0                              00000004
+KBI1                              00000005
+KBI2                              00000006
+KBI3                              00000007
+LATA                              00000F89
+LATA0                             00000000
+LATA1                             00000001
+LATA2                             00000002
+LATA3                             00000003
+LATA4                             00000004
+LATA5                             00000005
+LATA6                             00000006
+LATA7                             00000007
+LATB                              00000F8A
+LATB0                             00000000
+LATB1                             00000001
+LATB2                             00000002
+LATB3                             00000003
+LATB4                             00000004
+LATB5                             00000005
+LATB6                             00000006
+LATB7                             00000007
+LATC                              00000F8B
+LATC0                             00000000
+LATC1                             00000001
+LATC2                             00000002
+MPASM 5.87                  STEPPER_MAIN.ASM   8-14-2021  1:04:37         PAGE 17
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+LATC3                             00000003
+LATC4                             00000004
+LATC5                             00000005
+LATC6                             00000006
+LATC7                             00000007
+LFIOFS                            00000000
+LVDCON                            00000F9C
+LVDEN                             00000004
+LVDIE                             00000002
+LVDIF                             00000002
+LVDIN                             00000005
+LVDIP                             00000002
+LVDL0                             00000000
+LVDL1                             00000001
+LVDL2                             00000002
+LVDL3                             00000003
+LVV0                              00000000
+LVV1                              00000001
+LVV2                              00000002
+LVV3                              00000003
+MC1OUT                            00000007
+MC2OUT                            00000006
+MCLR                              00000003
+MFIOFS                            00000001
+MFIOSEL                           00000004
+MOV_CCW                           PORTA,1
+MOV_CW                            PORTA,0
+MSK0                              00000000
+MSK1                              00000001
+MSK2                              00000002
+MSK3                              00000003
+MSK4                              00000004
+MSK5                              00000005
+MSK6                              00000006
+MSK7                              00000007
+MSSP1MD                           00000006
+MSSP2MD                           00000007
+N                                 00000004
+NOT_A                             00000005
+NOT_ADDRESS                       00000005
+NOT_BOR                           00000000
+NOT_DONE                          00000001
+NOT_MCLR                          00000003
+NOT_PD                            00000002
+NOT_POR                           00000001
+NOT_RBPU                          00000007
+NOT_RI                            00000004
+NOT_SS                            00000005
+NOT_SS1                           00000005
+NOT_SS2                           00000000
+NOT_T1SYNC                        00000002
+NOT_T3SYNC                        00000002
+NOT_T5SYNC                        00000002
+MPASM 5.87                  STEPPER_MAIN.ASM   8-14-2021  1:04:37         PAGE 18
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+NOT_TO                            00000003
+NOT_W                             00000002
+NOT_WRITE                         00000002
+NVCFG0                            00000000
+NVCFG1                            00000001
+OERR                              00000001
+OERR1                             00000001
+OERR2                             00000001
+OSCCON                            00000FD3
+OSCCON2                           00000FD2
+OSCFIE                            00000007
+OSCFIF                            00000007
+OSCFIP                            00000007
+OSCTUNE                           00000F9B
+OSTS                              00000003
+OV                                00000003
+P                                 00000004
+P1A                               00000002
+P1B                               00000002
+P1C                               00000001
+P1D                               00000004
+P1DC0                             00000000
+P1DC1                             00000001
+P1DC2                             00000002
+P1DC3                             00000003
+P1DC4                             00000004
+P1DC5                             00000005
+P1DC6                             00000006
+P1M0                              00000006
+P1M1                              00000007
+P1RSEN                            00000007
+P1SSAC0                           00000002
+P1SSAC1                           00000003
+P1SSBD0                           00000000
+P1SSBD1                           00000001
+P2A_PORTB                         00000003
+P2A_PORTC                         00000001
+P2B_PORTB                         00000005
+P2B_PORTC                         00000000
+P2DC0                             00000000
+P2DC1                             00000001
+P2DC2                             00000002
+P2DC3                             00000003
+P2DC4                             00000004
+P2DC5                             00000005
+P2DC6                             00000006
+P2M0                              00000006
+P2M1                              00000007
+P2RSEN                            00000007
+P2SSAC0                           00000002
+P2SSAC1                           00000003
+P2SSBD0                           00000000
+P2SSBD1                           00000001
+MPASM 5.87                  STEPPER_MAIN.ASM   8-14-2021  1:04:37         PAGE 19
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+P3A_PORTB                         00000005
+P3A_PORTC                         00000006
+P3B                               00000007
+P3DC0                             00000000
+P3DC1                             00000001
+P3DC2                             00000002
+P3DC3                             00000003
+P3DC4                             00000004
+P3DC5                             00000005
+P3DC6                             00000006
+P3M0                              00000006
+P3M1                              00000007
+P3RSEN                            00000007
+P3SSAC0                           00000002
+P3SSAC1                           00000003
+P3SSBD0                           00000000
+P3SSBD1                           00000001
+PC                                00000FF9
+PCIE                              00000006
+PCL                               00000FF9
+PCLATH                            00000FFA
+PCLATU                            00000FFB
+PD                                00000002
+PDC0                              00000000
+PDC1                              00000001
+PDC2                              00000002
+PDC3                              00000003
+PDC4                              00000004
+PDC5                              00000005
+PDC6                              00000006
+PEIE                              00000006
+PEIE_GIEL                         00000006
+PEN                               00000002
+PGC                               00000006
+PGD                               00000007
+PIE1                              00000F9D
+PIE2                              00000FA0
+PIE3                              00000FA3
+PIE4                              00000F7A
+PIE5                              00000F7D
+PIR1                              00000F9E
+PIR2                              00000FA1
+PIR3                              00000FA4
+PIR4                              00000F7B
+PIR5                              00000F7E
+PLLEN                             00000006
+PLLRDY                            00000007
+PLUSW0                            00000FEB
+PLUSW1                            00000FE3
+PLUSW2                            00000FDB
+PMD0                              00000F3F
+PMD1                              00000F3E
+PMD2                              00000F3D
+MPASM 5.87                  STEPPER_MAIN.ASM   8-14-2021  1:04:37         PAGE 20
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+POR                               00000001
+PORTA                             00000F80
+PORTB                             00000F81
+PORTC                             00000F82
+PORTE                             00000F84
+POSTDEC0                          00000FED
+POSTDEC1                          00000FE5
+POSTDEC2                          00000FDD
+POSTINC0                          00000FEE
+POSTINC1                          00000FE6
+POSTINC2                          00000FDE
+PR2                               00000FBB
+PR4                               00000F52
+PR6                               00000F4B
+PREINC0                           00000FEC
+PREINC1                           00000FE4
+PREINC2                           00000FDC
+PRINCIPAL                         0000005E
+PRISD                             00000002
+PROD                              00000FF3
+PRODH                             00000FF4
+PRODL                             00000FF3
+PRSEN                             00000007
+PSA                               00000003
+PSS1AC0                           00000002
+PSS1AC1                           00000003
+PSS1BD0                           00000000
+PSS1BD1                           00000001
+PSS2AC0                           00000002
+PSS2AC1                           00000003
+PSS2BD0                           00000000
+PSS2BD1                           00000001
+PSS3AC0                           00000002
+PSS3AC1                           00000003
+PSS3BD0                           00000000
+PSS3BD1                           00000001
+PSSAC0                            00000002
+PSSAC1                            00000003
+PSSBD0                            00000000
+PSSBD1                            00000001
+PSTR1CON                          00000FB9
+PSTR2CON                          00000F63
+PSTR3CON                          00000F5A
+PSTRCON                           00000FB9
+PVCFG0                            00000002
+PVCFG1                            00000003
+PWM1CON                           00000FB7
+PWM2CON                           00000F65
+PWM3CON                           00000F5C
+PWMCON                            00000FB7
+R                                 00000002
+RA0                               00000000
+RA1                               00000001
+MPASM 5.87                  STEPPER_MAIN.ASM   8-14-2021  1:04:37         PAGE 21
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+RA2                               00000002
+RA3                               00000003
+RA4                               00000004
+RA5                               00000005
+RA6                               00000006
+RA7                               00000007
+RB0                               00000000
+RB1                               00000001
+RB2                               00000002
+RB3                               00000003
+RB4                               00000004
+RB5                               00000005
+RB6                               00000006
+RB7                               00000007
+RBIE                              00000003
+RBIF                              00000000
+RBIP                              00000000
+RBPU                              00000007
+RC0                               00000000
+RC1                               00000001
+RC1IE                             00000005
+RC1IF                             00000005
+RC1IP                             00000005
+RC1REG                            00000FAE
+RC1STA                            00000FAB
+RC2                               00000002
+RC2IE                             00000005
+RC2IF                             00000005
+RC2IP                             00000005
+RC2REG                            00000F74
+RC2STA                            00000F71
+RC3                               00000003
+RC4                               00000004
+RC5                               00000005
+RC6                               00000006
+RC7                               00000007
+RCEN                              00000003
+RCIDL                             00000006
+RCIE                              00000005
+RCIF                              00000005
+RCIP                              00000005
+RCON                              00000FD0
+RCREG                             00000FAE
+RCREG1                            00000FAE
+RCREG2                            00000F74
+RCSTA                             00000FAB
+RCSTA1                            00000FAB
+RCSTA2                            00000F71
+RD                                00000000
+RD16                              00000001
+RE3                               00000003
+RET_100ms                         000000D2
+RET_10ms                          00000136
+MPASM 5.87                  STEPPER_MAIN.ASM   8-14-2021  1:04:37         PAGE 22
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+RET_16ms                          0000010E
+RET_18ms                          00000122
+RET_1ms                           00000186
+RET_1s                            000000AA
+RET_250us                         00000172
+RET_33ms                          000000FA
+RET_500ms                         000000BE
+RET_500us                         0000015E
+RET_50ms                          000000E6
+RET_5ms                           0000014A
+RET_SERVO                         00000096
+RI                                00000004
+RSEN                              00000001
+RX                                00000007
+RX1                               00000007
+RX2                               00000007
+RX9                               00000006
+RX91                              00000006
+RX92                              00000006
+RX9D                              00000000
+RX9D1                             00000000
+RX9D2                             00000000
+R_NOT_W                           00000002
+R_W                               00000002
+S                                 00000003
+SBCDE                             00000002
+SBOREN                            00000006
+SCIE                              00000005
+SCK                               00000003
+SCK1                              00000003
+SCK2                              00000001
+SCKP                              00000004
+SCL                               00000003
+SCL1                              00000003
+SCL2                              00000001
+SCS0                              00000000
+SCS1                              00000001
+SDA                               00000004
+SDA1                              00000004
+SDA2                              00000002
+SDAHT                             00000003
+SDI                               00000004
+SDI1                              00000004
+SDI2                              00000002
+SDO                               00000005
+SDO1                              00000005
+SDO2                              00000003
+SEN                               00000000
+SENDB                             00000003
+SENDB1                            00000003
+SENDB2                            00000003
+SLRA                              00000000
+SLRB                              00000001
+MPASM 5.87                  STEPPER_MAIN.ASM   8-14-2021  1:04:37         PAGE 23
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+SLRC                              00000002
+SLRCON                            00000F60
+SMP                               00000007
+SOSCGO                            00000003
+SOSCRUN                           00000006
+SP0                               00000000
+SP1                               00000001
+SP1BRG                            00000FAF
+SP1BRGH                           00000FB0
+SP2                               00000002
+SP2BRG                            00000F75
+SP2BRGH                           00000F76
+SP3                               00000003
+SP4                               00000004
+SPBRG                             00000FAF
+SPBRG1                            00000FAF
+SPBRG2                            00000F75
+SPBRGH                            00000FB0
+SPBRGH1                           00000FB0
+SPBRGH2                           00000F76
+SPEN                              00000007
+SPEN1                             00000007
+SPEN2                             00000007
+SRCLK0                            00000004
+SRCLK1                            00000005
+SRCLK2                            00000006
+SRCON0                            00000F47
+SRCON1                            00000F46
+SREN                              00000005
+SREN1                             00000005
+SREN2                             00000005
+SRI                               00000000
+SRLEN                             00000007
+SRNQ                              00000005
+SRNQEN                            00000002
+SRPR                              00000000
+SRPS                              00000001
+SRQ                               00000004
+SRQEN                             00000003
+SRRC1E                            00000000
+SRRC2E                            00000001
+SRRCKE                            00000002
+SRRPE                             00000003
+SRSC1E                            00000004
+SRSC2E                            00000005
+SRSCKE                            00000006
+SRSPE                             00000007
+SS                                00000005
+SS1                               00000005
+SS2                               00000000
+SSP1ADD                           00000FC8
+SSP1BUF                           00000FC9
+SSP1CON1                          00000FC6
+MPASM 5.87                  STEPPER_MAIN.ASM   8-14-2021  1:04:37         PAGE 24
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+SSP1CON2                          00000FC5
+SSP1CON3                          00000FCB
+SSP1IE                            00000003
+SSP1IF                            00000003
+SSP1IP                            00000003
+SSP1MSK                           00000FCA
+SSP1STAT                          00000FC7
+SSP2ADD                           00000F6E
+SSP2BUF                           00000F6F
+SSP2CON1                          00000F6C
+SSP2CON2                          00000F6B
+SSP2CON3                          00000F69
+SSP2IE                            00000007
+SSP2IF                            00000007
+SSP2IP                            00000007
+SSP2MSK                           00000F6A
+SSP2STAT                          00000F6D
+SSPADD                            00000FC8
+SSPBUF                            00000FC9
+SSPCON1                           00000FC6
+SSPCON2                           00000FC5
+SSPCON3                           00000FCB
+SSPEN                             00000005
+SSPIE                             00000003
+SSPIF                             00000003
+SSPIP                             00000003
+SSPM0                             00000000
+SSPM1                             00000001
+SSPM2                             00000002
+SSPM3                             00000003
+SSPMSK                            00000FCA
+SSPOV                             00000006
+SSPSTAT                           00000FC7
+STATUS                            00000FD8
+STATUS_TEMP                       00000001
+STKFUL                            00000007
+STKOVF                            00000007
+STKPTR                            00000FFC
+STKPTR0                           00000000
+STKPTR1                           00000001
+STKPTR2                           00000002
+STKPTR3                           00000003
+STKPTR4                           00000004
+STKUNF                            00000006
+STR1A                             00000000
+STR1B                             00000001
+STR1C                             00000002
+STR1D                             00000003
+STR1SYNC                          00000004
+STR2A                             00000000
+STR2B                             00000001
+STR2C                             00000002
+STR2D                             00000003
+MPASM 5.87                  STEPPER_MAIN.ASM   8-14-2021  1:04:37         PAGE 25
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+STR2SYNC                          00000004
+STR3A                             00000000
+STR3B                             00000001
+STR3C                             00000002
+STR3D                             00000003
+STR3SYNC                          00000004
+SWDTE                             00000000
+SWDTEN                            00000000
+SYNC                              00000004
+SYNC1                             00000004
+SYNC2                             00000004
+T08BIT                            00000006
+T0CKI                             00000004
+T0CON                             00000FD5
+T0CS                              00000005
+T0IE                              00000005
+T0IF                              00000002
+T0PS0                             00000000
+T0PS1                             00000001
+T0PS2                             00000002
+T0SE                              00000004
+T1CKI                             00000000
+T1CKPS0                           00000004
+T1CKPS1                           00000005
+T1CON                             00000FCD
+T1G                               00000005
+T1GCON                            00000FCC
+T1GGO                             00000003
+T1GGO_NOT_DONE                    00000003
+T1GPOL                            00000006
+T1GSPM                            00000004
+T1GSS0                            00000000
+T1GSS1                            00000001
+T1GTM                             00000005
+T1GVAL                            00000002
+T1G_DONE                          00000003
+T1OSCEN                           00000003
+T1OSI                             00000001
+T1OSO                             00000000
+T1RD16                            00000001
+T1SOSCEN                          00000003
+T1SYNC                            00000002
+T2CKPS0                           00000000
+T2CKPS1                           00000001
+T2CON                             00000FBA
+T2OUTPS0                          00000003
+T2OUTPS1                          00000004
+T2OUTPS2                          00000005
+T2OUTPS3                          00000006
+T3CKI_PORTB                       00000005
+T3CKI_PORTC                       00000000
+T3CKPS0                           00000004
+T3CKPS1                           00000005
+MPASM 5.87                  STEPPER_MAIN.ASM   8-14-2021  1:04:37         PAGE 26
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+T3CON                             00000FB1
+T3G                               00000000
+T3GCON                            00000FB4
+T3GGO                             00000003
+T3GGO_NOT_DONE                    00000003
+T3GPOL                            00000006
+T3GSPM                            00000004
+T3GSS0                            00000000
+T3GSS1                            00000001
+T3GTM                             00000005
+T3GVAL                            00000002
+T3G_DONE                          00000003
+T3OSCEN                           00000003
+T3RD16                            00000001
+T3SOSCEN                          00000003
+T4CKPS0                           00000000
+T4CKPS1                           00000001
+T4CON                             00000F51
+T4OUTPS0                          00000003
+T4OUTPS1                          00000004
+T4OUTPS2                          00000005
+T4OUTPS3                          00000006
+T5CKI                             00000002
+T5CKPS0                           00000004
+T5CKPS1                           00000005
+T5CON                             00000F4E
+T5G                               00000004
+T5GCON                            00000F4D
+T5GGO                             00000003
+T5GGO_NOT_DONE                    00000003
+T5GPOL                            00000006
+T5GSPM                            00000004
+T5GSS0                            00000000
+T5GSS1                            00000001
+T5GTM                             00000005
+T5GVAL                            00000002
+T5G_DONE                          00000003
+T5RD16                            00000001
+T5SOSCEN                          00000003
+T5SYNC                            00000002
+T6CKPS0                           00000000
+T6CKPS1                           00000001
+T6CON                             00000F4A
+T6OUTPS0                          00000003
+T6OUTPS1                          00000004
+T6OUTPS2                          00000005
+T6OUTPS3                          00000006
+TABLAT                            00000FF5
+TBLPTR                            00000FF6
+TBLPTRH                           00000FF7
+TBLPTRL                           00000FF6
+TBLPTRU                           00000FF8
+TGEN                              00000004
+MPASM 5.87                  STEPPER_MAIN.ASM   8-14-2021  1:04:37         PAGE 27
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+TMR0                              00000FD6
+TMR0H                             00000FD7
+TMR0IE                            00000005
+TMR0IF                            00000002
+TMR0IP                            00000002
+TMR0L                             00000FD6
+TMR0ON                            00000007
+TMR1                              00000FCE
+TMR1CS0                           00000006
+TMR1CS1                           00000007
+TMR1GE                            00000007
+TMR1GIE                           00000000
+TMR1GIF                           00000000
+TMR1GIP                           00000000
+TMR1H                             00000FCF
+TMR1IE                            00000000
+TMR1IF                            00000000
+TMR1IP                            00000000
+TMR1L                             00000FCE
+TMR1MD                            00000000
+TMR1ON                            00000000
+TMR2                              00000FBC
+TMR2IE                            00000001
+TMR2IF                            00000001
+TMR2IP                            00000001
+TMR2MD                            00000001
+TMR2ON                            00000002
+TMR3                              00000FB2
+TMR3CS0                           00000006
+TMR3CS1                           00000007
+TMR3GE                            00000007
+TMR3GIE                           00000001
+TMR3GIF                           00000001
+TMR3GIP                           00000001
+TMR3H                             00000FB3
+TMR3IE                            00000001
+TMR3IF                            00000001
+TMR3IP                            00000001
+TMR3L                             00000FB2
+TMR3MD                            00000002
+TMR3ON                            00000000
+TMR4                              00000F53
+TMR4IE                            00000000
+TMR4IF                            00000000
+TMR4IP                            00000000
+TMR4MD                            00000003
+TMR4ON                            00000002
+TMR5                              00000F4F
+TMR5CS0                           00000006
+TMR5CS1                           00000007
+TMR5GE                            00000007
+TMR5GIE                           00000002
+TMR5GIF                           00000002
+MPASM 5.87                  STEPPER_MAIN.ASM   8-14-2021  1:04:37         PAGE 28
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+TMR5GIP                           00000002
+TMR5H                             00000F50
+TMR5IE                            00000001
+TMR5IF                            00000001
+TMR5IP                            00000001
+TMR5L                             00000F4F
+TMR5MD                            00000004
+TMR5ON                            00000000
+TMR6                              00000F4C
+TMR6IE                            00000002
+TMR6IF                            00000002
+TMR6IP                            00000002
+TMR6MD                            00000005
+TMR6ON                            00000002
+TO                                00000003
+TOS                               00000FFD
+TOSH                              00000FFE
+TOSL                              00000FFD
+TOSU                              00000FFF
+TRIGSEL                           00000007
+TRISA                             00000F92
+TRISA0                            00000000
+TRISA1                            00000001
+TRISA2                            00000002
+TRISA3                            00000003
+TRISA4                            00000004
+TRISA5                            00000005
+TRISA6                            00000006
+TRISA7                            00000007
+TRISB                             00000F93
+TRISB0                            00000000
+TRISB1                            00000001
+TRISB2                            00000002
+TRISB3                            00000003
+TRISB4                            00000004
+TRISB5                            00000005
+TRISB6                            00000006
+TRISB7                            00000007
+TRISC                             00000F94
+TRISC0                            00000000
+TRISC1                            00000001
+TRISC2                            00000002
+TRISC3                            00000003
+TRISC4                            00000004
+TRISC5                            00000005
+TRISC6                            00000006
+TRISC7                            00000007
+TRISE                             00000F96
+TRMT                              00000001
+TRMT1                             00000001
+TRMT2                             00000001
+TUN0                              00000000
+TUN1                              00000001
+MPASM 5.87                  STEPPER_MAIN.ASM   8-14-2021  1:04:37         PAGE 29
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+TUN2                              00000002
+TUN3                              00000003
+TUN4                              00000004
+TUN5                              00000005
+TX                                00000006
+TX1                               00000006
+TX1IE                             00000004
+TX1IF                             00000004
+TX1IP                             00000004
+TX1REG                            00000FAD
+TX1STA                            00000FAC
+TX2                               00000006
+TX2IE                             00000004
+TX2IF                             00000004
+TX2IP                             00000004
+TX2REG                            00000F73
+TX2STA                            00000F72
+TX9                               00000006
+TX91                              00000006
+TX92                              00000006
+TX9D                              00000000
+TX9D1                             00000000
+TX9D2                             00000000
+TXEN                              00000005
+TXEN1                             00000005
+TXEN2                             00000005
+TXIE                              00000004
+TXIF                              00000004
+TXIP                              00000004
+TXREG                             00000FAD
+TXREG1                            00000FAD
+TXREG2                            00000F73
+TXSTA                             00000FAC
+TXSTA1                            00000FAC
+TXSTA2                            00000F72
+UA                                00000001
+UART1MD                           00000006
+UART2MD                           00000007
+VAR_X                             00000003
+VDIRMAG                           00000007
+VPP                               00000003
+VREFCON0                          00000F42
+VREFCON1                          00000F41
+VREFCON2                          00000F40
+VREFM                             00000002
+VREFN                             00000002
+VREFP                             00000003
+W                                 00000000
+WCOL                              00000007
+WDTCON                            00000FD1
+WPUB                              00000F61
+WPUB0                             00000000
+WPUB1                             00000001
+MPASM 5.87                  STEPPER_MAIN.ASM   8-14-2021  1:04:37         PAGE 30
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+WPUB2                             00000002
+WPUB3                             00000003
+WPUB4                             00000004
+WPUB5                             00000005
+WPUB6                             00000006
+WPUB7                             00000007
+WPUE3                             00000007
+WR                                00000001
+WREG                              00000FE8
+WREN                              00000002
+WRERR                             00000003
+WUE                               00000001
+W_TEMP                            00000000
+Z                                 00000002
+_BOREN_NOSLP_2L                   000000FD
+_BOREN_OFF_2L                     000000F9
+_BOREN_ON_2L                      000000FB
+_BOREN_SBORDIS_2L                 000000FF
+_BORV_190_2L                      000000FF
+_BORV_220_2L                      000000F7
+_BORV_250_2L                      000000EF
+_BORV_285_2L                      000000E7
+_CCP2MX_PORTB3_3H                 000000FE
+_CCP2MX_PORTC1_3H                 000000FF
+_CCP3MX_PORTB5_3H                 000000FF
+_CCP3MX_PORTC6_3H                 000000FB
+_CONFIG1H                         00300001
+_CONFIG2H                         00300003
+_CONFIG2L                         00300002
+_CONFIG3H                         00300005
+_CONFIG4L                         00300006
+_CONFIG5H                         00300009
+_CONFIG5L                         00300008
+_CONFIG6H                         0030000B
+_CONFIG6L                         0030000A
+_CONFIG7H                         0030000D
+_CONFIG7L                         0030000C
+_CP0_OFF_5L                       000000FF
+_CP0_ON_5L                        000000FE
+_CP1_OFF_5L                       000000FF
+_CP1_ON_5L                        000000FD
+_CP2_OFF_5L                       000000FF
+_CP2_ON_5L                        000000FB
+_CP3_OFF_5L                       000000FF
+_CP3_ON_5L                        000000F7
+_CPB_OFF_5H                       000000FF
+_CPB_ON_5H                        000000BF
+_CPD_OFF_5H                       000000FF
+_CPD_ON_5H                        0000007F
+_DEBUG_OFF_4L                     000000FF
+_DEBUG_ON_4L                      0000007F
+_DEVID1                           003FFFFE
+_DEVID2                           003FFFFF
+MPASM 5.87                  STEPPER_MAIN.ASM   8-14-2021  1:04:37         PAGE 31
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+_EBTR0_OFF_7L                     000000FF
+_EBTR0_ON_7L                      000000FE
+_EBTR1_OFF_7L                     000000FF
+_EBTR1_ON_7L                      000000FD
+_EBTR2_OFF_7L                     000000FF
+_EBTR2_ON_7L                      000000FB
+_EBTR3_OFF_7L                     000000FF
+_EBTR3_ON_7L                      000000F7
+_EBTRB_OFF_7H                     000000FF
+_EBTRB_ON_7H                      000000BF
+_FCMEN_OFF_1H                     000000BF
+_FCMEN_ON_1H                      000000FF
+_FOSC_ECHPIO6_1H                  000000F5
+_FOSC_ECHP_1H                     000000F4
+_FOSC_ECLPIO6_1H                  000000FD
+_FOSC_ECLP_1H                     000000FC
+_FOSC_ECMPIO6_1H                  000000FB
+_FOSC_ECMP_1H                     000000FA
+_FOSC_HSHP_1H                     000000F2
+_FOSC_HSMP_1H                     000000F3
+_FOSC_INTIO67_1H                  000000F8
+_FOSC_INTIO7_1H                   000000F9
+_FOSC_LP_1H                       000000F0
+_FOSC_RCIO6_1H                    000000F7
+_FOSC_RC_1H                       000000F6
+_FOSC_XT_1H                       000000F1
+_HFOFST_OFF_3H                    000000F7
+_HFOFST_ON_3H                     000000FF
+_IDLOC0                           00200000
+_IDLOC1                           00200001
+_IDLOC2                           00200002
+_IDLOC3                           00200003
+_IDLOC4                           00200004
+_IDLOC5                           00200005
+_IDLOC6                           00200006
+_IDLOC7                           00200007
+_IESO_OFF_1H                      0000007F
+_IESO_ON_1H                       000000FF
+_LVP_OFF_4L                       000000FB
+_LVP_ON_4L                        000000FF
+_MCLRE_EXTMCLR_3H                 000000FF
+_MCLRE_INTMCLR_3H                 0000007F
+_P2BMX_PORTB5_3H                  000000FF
+_P2BMX_PORTC0_3H                  000000DF
+_PBADEN_OFF_3H                    000000FD
+_PBADEN_ON_3H                     000000FF
+_PLLCFG_OFF_1H                    000000EF
+_PLLCFG_ON_1H                     000000FF
+_PRICLKEN_OFF_1H                  000000DF
+_PRICLKEN_ON_1H                   000000FF
+_PWRTEN_OFF_2L                    000000FF
+_PWRTEN_ON_2L                     000000FE
+_STVREN_OFF_4L                    000000FE
+MPASM 5.87                  STEPPER_MAIN.ASM   8-14-2021  1:04:37         PAGE 32
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+_STVREN_ON_4L                     000000FF
+_T3CMX_PORTB5_3H                  000000EF
+_T3CMX_PORTC0_3H                  000000FF
+_WDTEN_NOSLP_2H                   000000FD
+_WDTEN_OFF_2H                     000000FC
+_WDTEN_ON_2H                      000000FF
+_WDTEN_SWON_2H                    000000FE
+_WDTPS_1024_2H                    000000EB
+_WDTPS_128_2H                     000000DF
+_WDTPS_16384_2H                   000000FB
+_WDTPS_16_2H                      000000D3
+_WDTPS_1_2H                       000000C3
+_WDTPS_2048_2H                    000000EF
+_WDTPS_256_2H                     000000E3
+_WDTPS_2_2H                       000000C7
+_WDTPS_32768_2H                   000000FF
+_WDTPS_32_2H                      000000D7
+_WDTPS_4096_2H                    000000F3
+_WDTPS_4_2H                       000000CB
+_WDTPS_512_2H                     000000E7
+_WDTPS_64_2H                      000000DB
+_WDTPS_8192_2H                    000000F7
+_WDTPS_8_2H                       000000CF
+_WRT0_OFF_6L                      000000FF
+_WRT0_ON_6L                       000000FE
+_WRT1_OFF_6L                      000000FF
+_WRT1_ON_6L                       000000FD
+_WRT2_OFF_6L                      000000FF
+_WRT2_ON_6L                       000000FB
+_WRT3_OFF_6L                      000000FF
+_WRT3_ON_6L                       000000F7
+_WRTB_OFF_6H                      000000FF
+_WRTB_ON_6H                       000000BF
+_WRTC_OFF_6H                      000000FF
+_WRTC_ON_6H                       000000DF
+_WRTD_OFF_6H                      000000FF
+_WRTD_ON_6H                       0000007F
+_XINST_OFF_4L                     000000BF
+_XINST_ON_4L                      000000FF
+__18F26K22                        00000001
+
+Errors   :     0
+Warnings :     3 reported,     0 suppressed
+Messages :     0 reported,     0 suppressed
+
+
