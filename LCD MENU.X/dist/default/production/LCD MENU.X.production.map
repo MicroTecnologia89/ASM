@@ -1,0 +1,300 @@
+MPLINK 5.09, LINKER
+Linker Map File - Created Sun Feb 27 01:30:59 2022
+
+                                 Section Info
+                  Section       Type    Address   Location Size(Bytes)
+                ---------  ---------  ---------  ---------  ---------
+                   .org_0       code   0x000000    program   0x000004
+                   .cinit    romdata   0x000004    program   0x000002
+                   .org_1       code   0x000008    program   0x000004
+                   .org_2       code   0x000018    program   0x000a24
+.config_300001_BUILD/DEFAULT/PRODUCTION/MAINLCD    romdata   0x300001    program   0x000001
+.config_300002_BUILD/DEFAULT/PRODUCTION/MAINLCD    romdata   0x300002    program   0x000001
+.config_300003_BUILD/DEFAULT/PRODUCTION/MAINLCD    romdata   0x300003    program   0x000001
+.config_300005_BUILD/DEFAULT/PRODUCTION/MAINLCD    romdata   0x300005    program   0x000001
+.config_300006_BUILD/DEFAULT/PRODUCTION/MAINLCD    romdata   0x300006    program   0x000001
+.config_300008_BUILD/DEFAULT/PRODUCTION/MAINLCD    romdata   0x300008    program   0x000001
+.config_300009_BUILD/DEFAULT/PRODUCTION/MAINLCD    romdata   0x300009    program   0x000001
+.config_30000A_BUILD/DEFAULT/PRODUCTION/MAINLCD    romdata   0x30000a    program   0x000001
+.config_30000B_BUILD/DEFAULT/PRODUCTION/MAINLCD    romdata   0x30000b    program   0x000001
+.config_30000C_BUILD/DEFAULT/PRODUCTION/MAINLCD    romdata   0x30000c    program   0x000001
+.config_30000D_BUILD/DEFAULT/PRODUCTION/MAINLCD    romdata   0x30000d    program   0x000001
+
+
+
+                              Program Memory Usage 
+                               Start         End      
+                           ---------   ---------      
+                            0x000000    0x000005      
+                            0x000008    0x00000b      
+                            0x000018    0x000a3b      
+                            0x300001    0x300003      
+                            0x300005    0x300006      
+                            0x300008    0x30000d      
+            2617 out of 66584 program addresses used, program memory utilization is 3%
+
+
+
+                              Symbols - Sorted by Name
+                     Name    Address   Location    Storage File                     
+                ---------  ---------  ---------  --------- ---------                
+           ALTA_PRIORIDAD   0x00002e    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\MAINLCDMENU.asm
+           BAJA_PRIORIDAD   0x000018    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\MAINLCDMENU.asm
+           BSUMA_CENTENAS   0x0007d8    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\LCD_4BIT.INC
+            BSUMA_DECENAS   0x0007ee    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\LCD_4BIT.INC
+           BSUMA_UNIDADES   0x0007f6    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\LCD_4BIT.INC
+              BS_CENTENAS   0x0007ca    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\LCD_4BIT.INC
+               BS_DECENAS   0x0007e0    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\LCD_4BIT.INC
+               CAMBIA_DPC   0x0003e0    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\MAINLCDMENU.asm
+               CAMBIA_UPC   0x0003fa    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\MAINLCDMENU.asm
+            CICLO_RETARDO   0x0007b6    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\RETARDOS.INC
+           CONVERSION_BCD   0x0007fc    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\LCD_4BIT.INC
+           CONVERSION_BIN   0x0007c2    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\LCD_4BIT.INC
+                 CURSOR1V   0x00043c    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\MAINLCDMENU.asm
+                 CURSOR2V   0x000466    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\MAINLCDMENU.asm
+              ENVIAR_DATO   0x000974    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\LCD_4BIT.INC
+                FIN_INTER   0x000022    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\MAINLCDMENU.asm
+                   INICIO   0x000032    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\MAINLCDMENU.asm
+                  INI_LCD   0x00083e    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\LCD_4BIT.INC
+      LCD_2Lineas4Bits5x7   0x000968    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\LCD_4BIT.INC
+                 LCD_Byte   0x000a02    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\LCD_4BIT.INC
+         LCD_ByteCompleto   0x000a16    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\LCD_4BIT.INC
+                LCD_CLEAR   0x000964    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\LCD_4BIT.INC
+             LCD_CLEAR_L1   0x0009c8    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\LCD_4BIT.INC
+             LCD_CLEAR_L2   0x0009d2    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\LCD_4BIT.INC
+             LCD_CLEAR_L3   0x0009dc    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\LCD_4BIT.INC
+             LCD_CLEAR_L4   0x0009e6    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\LCD_4BIT.INC
+                  LCD_CMD   0x00096a    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\LCD_4BIT.INC
+                 LCD_CTMP   0x00089c    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\LCD_4BIT.INC
+           LCD_CURSOR_BON   0x000970    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\LCD_4BIT.INC
+                LCD_C_OFF   0x000960    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\LCD_4BIT.INC
+                 LCD_C_ON   0x00095c    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\LCD_4BIT.INC
+          LCD_CodigoCGROM   0x000992    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\LCD_4BIT.INC
+           LCD_CursorIncr   0x000898    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\LCD_4BIT.INC
+        LCD_EnheMayuscula   0x0009a4    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\LCD_4BIT.INC
+        LCD_EnheMinuscula   0x000994    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\LCD_4BIT.INC
+                LCD_Envia   0x00097a    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\LCD_4BIT.INC
+       LCD_EnviaByteLetra   0x000a34    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\LCD_4BIT.INC
+             LCD_FinCGROM   0x0009c4    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\LCD_4BIT.INC
+   LCD_FinVisualizaDigito   0x000a38    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\LCD_4BIT.INC
+                LCD_Grado   0x0009b6    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\LCD_4BIT.INC
+                   LCD_L1   0x0008a8    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\LCD_4BIT.INC
+               LCD_L1MENU   0x0008a0    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\LCD_4BIT.INC
+                   LCD_L2   0x0008ac    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\LCD_4BIT.INC
+               LCD_L2MENU   0x0008a4    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\LCD_4BIT.INC
+                   LCD_L3   0x0008b0    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\LCD_4BIT.INC
+                LCD_L3.10   0x0008d4    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\LCD_4BIT.INC
+                LCD_L3.11   0x0008d8    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\LCD_4BIT.INC
+                LCD_L3.12   0x0008dc    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\LCD_4BIT.INC
+                LCD_L3.13   0x0008e0    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\LCD_4BIT.INC
+                LCD_L3.14   0x0008e4    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\LCD_4BIT.INC
+                LCD_L3.15   0x0008e8    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\LCD_4BIT.INC
+                LCD_L3.16   0x0008ec    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\LCD_4BIT.INC
+                LCD_L3.17   0x0008f0    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\LCD_4BIT.INC
+                LCD_L3.18   0x0008f4    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\LCD_4BIT.INC
+                LCD_L3.19   0x0008f8    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\LCD_4BIT.INC
+                 LCD_L3.2   0x0008b4    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\LCD_4BIT.INC
+                LCD_L3.20   0x0008fc    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\LCD_4BIT.INC
+                 LCD_L3.3   0x0008b8    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\LCD_4BIT.INC
+                 LCD_L3.4   0x0008bc    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\LCD_4BIT.INC
+                 LCD_L3.5   0x0008c0    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\LCD_4BIT.INC
+                 LCD_L3.6   0x0008c4    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\LCD_4BIT.INC
+                 LCD_L3.7   0x0008c8    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\LCD_4BIT.INC
+                 LCD_L3.8   0x0008cc    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\LCD_4BIT.INC
+                 LCD_L3.9   0x0008d0    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\LCD_4BIT.INC
+                   LCD_L4   0x000900    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\LCD_4BIT.INC
+                LCD_L4.10   0x000924    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\LCD_4BIT.INC
+                LCD_L4.11   0x000928    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\LCD_4BIT.INC
+                LCD_L4.12   0x00092c    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\LCD_4BIT.INC
+                LCD_L4.13   0x000930    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\LCD_4BIT.INC
+                LCD_L4.14   0x000934    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\LCD_4BIT.INC
+                LCD_L4.15   0x000938    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\LCD_4BIT.INC
+                LCD_L4.16   0x00093c    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\LCD_4BIT.INC
+                LCD_L4.17   0x000940    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\LCD_4BIT.INC
+                LCD_L4.18   0x000944    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\LCD_4BIT.INC
+                LCD_L4.19   0x000948    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\LCD_4BIT.INC
+                 LCD_L4.2   0x000904    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\LCD_4BIT.INC
+                LCD_L4.20   0x00094c    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\LCD_4BIT.INC
+                 LCD_L4.3   0x000908    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\LCD_4BIT.INC
+                 LCD_L4.4   0x00090c    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\LCD_4BIT.INC
+                 LCD_L4.5   0x000910    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\LCD_4BIT.INC
+                 LCD_L4.6   0x000914    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\LCD_4BIT.INC
+                 LCD_L4.7   0x000918    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\LCD_4BIT.INC
+                 LCD_L4.8   0x00091c    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\LCD_4BIT.INC
+                 LCD_L4.9   0x000920    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\LCD_4BIT.INC
+          LCD_LINEA_CLEAR   0x0009f0    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\LCD_4BIT.INC
+               LCD_Nibble   0x000a20    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\LCD_4BIT.INC
+                  LCD_OFF   0x000958    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\LCD_4BIT.INC
+       LCD_PosicionLinea1   0x000950    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\LCD_4BIT.INC
+       LCD_PosicionLinea2   0x000954    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\LCD_4BIT.INC
+           LCD_SEND_WHITE   0x0009f4    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\LCD_4BIT.INC
+        LCD_VisualizaAlto   0x000a18    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\LCD_4BIT.INC
+        LCD_VisualizaBajo   0x000a1e    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\LCD_4BIT.INC
+                LCD_WRITE   0x000884    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\LCD_4BIT.INC
+           MUESTRA_CURSOR   0x000412    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\MAINLCDMENU.asm
+                  OPCION2   0x0000b2    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\MAINLCDMENU.asm
+                  OPCION3   0x0000cc    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\MAINLCDMENU.asm
+               OPCION_DOS   0x0001e4    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\MAINLCDMENU.asm
+              OPCION_TRES   0x0002e2    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\MAINLCDMENU.asm
+               OPCION_UNO   0x0000e6    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\MAINLCDMENU.asm
+                PRINCIPAL   0x000078    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\MAINLCDMENU.asm
+            PRINT_MENU_L1   0x00048e    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\MAINLCDMENU.asm
+            PRINT_MENU_L2   0x00050c    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\MAINLCDMENU.asm
+            PRINT_MENU_L3   0x00058a    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\MAINLCDMENU.asm
+            PRINT_MENU_L4   0x000608    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\MAINLCDMENU.asm
+        REINICIA_PROGRAMA   0x000062    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\MAINLCDMENU.asm
+                RET_100ms   0x0006da    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\RETARDOS.INC
+                RET_100us   0x00078e    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\RETARDOS.INC
+                 RET_10ms   0x00073e    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\RETARDOS.INC
+                 RET_16ms   0x000716    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\RETARDOS.INC
+                 RET_18ms   0x00072a    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\RETARDOS.INC
+                  RET_1ms   0x0007a2    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\RETARDOS.INC
+                   RET_1s   0x0006b2    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\RETARDOS.INC
+                RET_250us   0x00077a    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\RETARDOS.INC
+                 RET_33ms   0x000702    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\RETARDOS.INC
+                RET_500ms   0x0006c6    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\RETARDOS.INC
+                RET_500us   0x000766    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\RETARDOS.INC
+                 RET_50ms   0x0006ee    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\RETARDOS.INC
+                  RET_5ms   0x000752    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\RETARDOS.INC
+                RET_SERVO   0x00069e    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\RETARDOS.INC
+              SELECT_MENU   0x000092    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\MAINLCDMENU.asm
+               SET_CURSOR   0x00096e    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\LCD_4BIT.INC
+            SUMA_CENTENAS   0x000812    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\LCD_4BIT.INC
+             SUMA_DECENAS   0x000828    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\LCD_4BIT.INC
+            SUMA_UNIDADES   0x000830    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\LCD_4BIT.INC
+               S_CENTENAS   0x000804    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\LCD_4BIT.INC
+                S_DECENAS   0x00081a    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\LCD_4BIT.INC
+
+
+
+                              Symbols - Sorted by Address
+                     Name    Address   Location    Storage File                     
+                ---------  ---------  ---------  --------- ---------                
+           BAJA_PRIORIDAD   0x000018    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\MAINLCDMENU.asm
+                FIN_INTER   0x000022    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\MAINLCDMENU.asm
+           ALTA_PRIORIDAD   0x00002e    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\MAINLCDMENU.asm
+                   INICIO   0x000032    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\MAINLCDMENU.asm
+        REINICIA_PROGRAMA   0x000062    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\MAINLCDMENU.asm
+                PRINCIPAL   0x000078    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\MAINLCDMENU.asm
+              SELECT_MENU   0x000092    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\MAINLCDMENU.asm
+                  OPCION2   0x0000b2    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\MAINLCDMENU.asm
+                  OPCION3   0x0000cc    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\MAINLCDMENU.asm
+               OPCION_UNO   0x0000e6    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\MAINLCDMENU.asm
+               OPCION_DOS   0x0001e4    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\MAINLCDMENU.asm
+              OPCION_TRES   0x0002e2    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\MAINLCDMENU.asm
+               CAMBIA_DPC   0x0003e0    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\MAINLCDMENU.asm
+               CAMBIA_UPC   0x0003fa    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\MAINLCDMENU.asm
+           MUESTRA_CURSOR   0x000412    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\MAINLCDMENU.asm
+                 CURSOR1V   0x00043c    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\MAINLCDMENU.asm
+                 CURSOR2V   0x000466    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\MAINLCDMENU.asm
+            PRINT_MENU_L1   0x00048e    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\MAINLCDMENU.asm
+            PRINT_MENU_L2   0x00050c    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\MAINLCDMENU.asm
+            PRINT_MENU_L3   0x00058a    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\MAINLCDMENU.asm
+            PRINT_MENU_L4   0x000608    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\MAINLCDMENU.asm
+                RET_SERVO   0x00069e    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\RETARDOS.INC
+                   RET_1s   0x0006b2    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\RETARDOS.INC
+                RET_500ms   0x0006c6    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\RETARDOS.INC
+                RET_100ms   0x0006da    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\RETARDOS.INC
+                 RET_50ms   0x0006ee    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\RETARDOS.INC
+                 RET_33ms   0x000702    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\RETARDOS.INC
+                 RET_16ms   0x000716    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\RETARDOS.INC
+                 RET_18ms   0x00072a    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\RETARDOS.INC
+                 RET_10ms   0x00073e    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\RETARDOS.INC
+                  RET_5ms   0x000752    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\RETARDOS.INC
+                RET_500us   0x000766    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\RETARDOS.INC
+                RET_250us   0x00077a    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\RETARDOS.INC
+                RET_100us   0x00078e    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\RETARDOS.INC
+                  RET_1ms   0x0007a2    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\RETARDOS.INC
+            CICLO_RETARDO   0x0007b6    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\RETARDOS.INC
+           CONVERSION_BIN   0x0007c2    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\LCD_4BIT.INC
+              BS_CENTENAS   0x0007ca    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\LCD_4BIT.INC
+           BSUMA_CENTENAS   0x0007d8    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\LCD_4BIT.INC
+               BS_DECENAS   0x0007e0    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\LCD_4BIT.INC
+            BSUMA_DECENAS   0x0007ee    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\LCD_4BIT.INC
+           BSUMA_UNIDADES   0x0007f6    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\LCD_4BIT.INC
+           CONVERSION_BCD   0x0007fc    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\LCD_4BIT.INC
+               S_CENTENAS   0x000804    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\LCD_4BIT.INC
+            SUMA_CENTENAS   0x000812    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\LCD_4BIT.INC
+                S_DECENAS   0x00081a    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\LCD_4BIT.INC
+             SUMA_DECENAS   0x000828    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\LCD_4BIT.INC
+            SUMA_UNIDADES   0x000830    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\LCD_4BIT.INC
+                  INI_LCD   0x00083e    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\LCD_4BIT.INC
+                LCD_WRITE   0x000884    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\LCD_4BIT.INC
+           LCD_CursorIncr   0x000898    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\LCD_4BIT.INC
+                 LCD_CTMP   0x00089c    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\LCD_4BIT.INC
+               LCD_L1MENU   0x0008a0    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\LCD_4BIT.INC
+               LCD_L2MENU   0x0008a4    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\LCD_4BIT.INC
+                   LCD_L1   0x0008a8    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\LCD_4BIT.INC
+                   LCD_L2   0x0008ac    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\LCD_4BIT.INC
+                   LCD_L3   0x0008b0    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\LCD_4BIT.INC
+                 LCD_L3.2   0x0008b4    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\LCD_4BIT.INC
+                 LCD_L3.3   0x0008b8    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\LCD_4BIT.INC
+                 LCD_L3.4   0x0008bc    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\LCD_4BIT.INC
+                 LCD_L3.5   0x0008c0    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\LCD_4BIT.INC
+                 LCD_L3.6   0x0008c4    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\LCD_4BIT.INC
+                 LCD_L3.7   0x0008c8    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\LCD_4BIT.INC
+                 LCD_L3.8   0x0008cc    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\LCD_4BIT.INC
+                 LCD_L3.9   0x0008d0    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\LCD_4BIT.INC
+                LCD_L3.10   0x0008d4    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\LCD_4BIT.INC
+                LCD_L3.11   0x0008d8    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\LCD_4BIT.INC
+                LCD_L3.12   0x0008dc    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\LCD_4BIT.INC
+                LCD_L3.13   0x0008e0    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\LCD_4BIT.INC
+                LCD_L3.14   0x0008e4    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\LCD_4BIT.INC
+                LCD_L3.15   0x0008e8    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\LCD_4BIT.INC
+                LCD_L3.16   0x0008ec    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\LCD_4BIT.INC
+                LCD_L3.17   0x0008f0    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\LCD_4BIT.INC
+                LCD_L3.18   0x0008f4    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\LCD_4BIT.INC
+                LCD_L3.19   0x0008f8    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\LCD_4BIT.INC
+                LCD_L3.20   0x0008fc    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\LCD_4BIT.INC
+                   LCD_L4   0x000900    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\LCD_4BIT.INC
+                 LCD_L4.2   0x000904    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\LCD_4BIT.INC
+                 LCD_L4.3   0x000908    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\LCD_4BIT.INC
+                 LCD_L4.4   0x00090c    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\LCD_4BIT.INC
+                 LCD_L4.5   0x000910    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\LCD_4BIT.INC
+                 LCD_L4.6   0x000914    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\LCD_4BIT.INC
+                 LCD_L4.7   0x000918    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\LCD_4BIT.INC
+                 LCD_L4.8   0x00091c    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\LCD_4BIT.INC
+                 LCD_L4.9   0x000920    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\LCD_4BIT.INC
+                LCD_L4.10   0x000924    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\LCD_4BIT.INC
+                LCD_L4.11   0x000928    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\LCD_4BIT.INC
+                LCD_L4.12   0x00092c    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\LCD_4BIT.INC
+                LCD_L4.13   0x000930    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\LCD_4BIT.INC
+                LCD_L4.14   0x000934    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\LCD_4BIT.INC
+                LCD_L4.15   0x000938    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\LCD_4BIT.INC
+                LCD_L4.16   0x00093c    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\LCD_4BIT.INC
+                LCD_L4.17   0x000940    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\LCD_4BIT.INC
+                LCD_L4.18   0x000944    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\LCD_4BIT.INC
+                LCD_L4.19   0x000948    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\LCD_4BIT.INC
+                LCD_L4.20   0x00094c    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\LCD_4BIT.INC
+       LCD_PosicionLinea1   0x000950    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\LCD_4BIT.INC
+       LCD_PosicionLinea2   0x000954    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\LCD_4BIT.INC
+                  LCD_OFF   0x000958    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\LCD_4BIT.INC
+                 LCD_C_ON   0x00095c    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\LCD_4BIT.INC
+                LCD_C_OFF   0x000960    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\LCD_4BIT.INC
+                LCD_CLEAR   0x000964    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\LCD_4BIT.INC
+      LCD_2Lineas4Bits5x7   0x000968    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\LCD_4BIT.INC
+                  LCD_CMD   0x00096a    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\LCD_4BIT.INC
+               SET_CURSOR   0x00096e    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\LCD_4BIT.INC
+           LCD_CURSOR_BON   0x000970    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\LCD_4BIT.INC
+              ENVIAR_DATO   0x000974    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\LCD_4BIT.INC
+                LCD_Envia   0x00097a    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\LCD_4BIT.INC
+          LCD_CodigoCGROM   0x000992    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\LCD_4BIT.INC
+        LCD_EnheMinuscula   0x000994    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\LCD_4BIT.INC
+        LCD_EnheMayuscula   0x0009a4    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\LCD_4BIT.INC
+                LCD_Grado   0x0009b6    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\LCD_4BIT.INC
+             LCD_FinCGROM   0x0009c4    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\LCD_4BIT.INC
+             LCD_CLEAR_L1   0x0009c8    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\LCD_4BIT.INC
+             LCD_CLEAR_L2   0x0009d2    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\LCD_4BIT.INC
+             LCD_CLEAR_L3   0x0009dc    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\LCD_4BIT.INC
+             LCD_CLEAR_L4   0x0009e6    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\LCD_4BIT.INC
+          LCD_LINEA_CLEAR   0x0009f0    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\LCD_4BIT.INC
+           LCD_SEND_WHITE   0x0009f4    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\LCD_4BIT.INC
+                 LCD_Byte   0x000a02    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\LCD_4BIT.INC
+         LCD_ByteCompleto   0x000a16    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\LCD_4BIT.INC
+        LCD_VisualizaAlto   0x000a18    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\LCD_4BIT.INC
+        LCD_VisualizaBajo   0x000a1e    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\LCD_4BIT.INC
+               LCD_Nibble   0x000a20    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\LCD_4BIT.INC
+       LCD_EnviaByteLetra   0x000a34    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\LCD_4BIT.INC
+   LCD_FinVisualizaDigito   0x000a38    program     static C:\Users\flexy\Desktop\PIC Turotiales\PIC18F26K22\ASM\LCD MENU.X\LCD_4BIT.INC
+
+
